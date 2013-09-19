@@ -6,8 +6,8 @@
 // Setup Leap loop with frame callback function
 var controllerOptions = 
    { enableGestures: true },
-    width = 960,
-    height = 500,
+    width = 1260,
+    height = 700,
     canvas = d3.select('div#container')
         .append('canvas')
         .attr('width', width)
