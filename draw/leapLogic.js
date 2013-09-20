@@ -20,8 +20,9 @@ function draw() {
 		  		'ay' : a.tipPosition.y
 				};
 				strokeAsString = JSON.stringify(stroke);
+				// send to subscribers via Vert.x
 				publish("drawingAddress", strokeAsString);
-
+				// draw the gesture/movement on my canvas
 			  drawStroke(stroke);
 			  console.log(strokeAsString);
     } // for
