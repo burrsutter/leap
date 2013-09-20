@@ -31,17 +31,6 @@ https://github.com/tmcw/leap-simple
     }
   }
 
-  function subscribe(address) {
-    if (eb) {
-      eb.registerHandler(address, function(msg, replyTo) {
-        console.log(msg);
-        console.log(replyTo);
-		console.log("Received Message: " + msg);
-      });
-	  console.log("subscribed to " + address);
-    }
-  }
-
   function closeConn() {
     if (eb) {
       eb.close();
@@ -66,9 +55,7 @@ https://github.com/tmcw/leap-simple
   $(document).ready(function() {
 	openConn();
 	// openConn needs just a wee bit of time to setup
-	// sender does not also need to subscribe?
 	setTimeout(function () {
-    	// subscribe("drawingAddress");
   	}, 2000);
 
 	
@@ -79,6 +66,7 @@ https://github.com/tmcw/leap-simple
   });
 
 </script>
-<script src='drawBurr.js'></script>
+<script src='drawStroke.js'></script>
+<script src='leapLogic.js'></script>
 </body>
 </html>
