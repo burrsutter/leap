@@ -3,7 +3,7 @@
 // https://github.com/tmcw/leap-simple
 
 
-// Setup Leap loop with frame callback function
+
 function draw() {
     var a, b;
 
@@ -30,6 +30,7 @@ function draw() {
     before = after;
 }
 
+// Setup Leap loop with frame callback function
 Leap.loop(controllerOptions, function(frame, done) {
     after = {};
     for (var i = 0; i < frame.pointables.length; i++) {
