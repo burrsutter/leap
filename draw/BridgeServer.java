@@ -30,8 +30,6 @@ public class BridgeServer extends Verticle {
         if (req.path().endsWith("leapLogic.js")) req.response().sendFile("leapLogic.js"); // Serve the js
         if (req.path().endsWith("leap.js")) req.response().sendFile("leap.js"); // Serve the js
         if (req.path().endsWith("d3.v3.min.js")) req.response().sendFile("d3.v3.min.js"); // Serve the js
-        if (req.path().endsWith("touchDraw.html")) req.response().sendFile("touchDraw.html"); 
-        if (req.path().endsWith("multiTouchDraw.html")) req.response().sendFile("multiTouchDraw.html"); 
       }
     });
 
@@ -44,6 +42,21 @@ public class BridgeServer extends Verticle {
     sockJSServer.setHook(hook);
     sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), permitted, permitted);
 
-    server.listen(Integer.parseInt(System.getenv("OPENSHIFT_DIY_PORT")),System.getenv("OPENSHIFT_DIY_IP"));
+		String portAsString = System.getenv("OPENSHIFT_DIY_PORT");
+		int port = 0;
+		if (portAsString != null && !portAsString.equals("")) {
+			port = Integer.parseInt(portAsString);
+		} else {
+			port = 8000;
+		}
+		String ipAddress = System.getenv("OPENSHIFT_DIY_IP");
+		
+		if (ipAddress != null && !ipAddress.equals("")) {
+			System.out.println("Starting Server on " + ipAddress + ":" + port);
+			server.listen(port, ipAddress);
+		} else {
+			System.out.println("Starting Server on " + port );
+			server.listen(port);
+		}
   }
 }
