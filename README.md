@@ -6,6 +6,8 @@
 
 * leap.js comes from Leap Motion - no alterations
 
+Video: https://vimeo.com/75067775
+
 The OpenShift `diy` cartridge documentation can be found at:
 
 https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-diy/README.md
